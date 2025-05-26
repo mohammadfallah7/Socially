@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./Navbar";
+import Container from "@/components/Container";
 
 export const metadata: Metadata = {
   title: "Socially",
@@ -23,12 +24,12 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             <div className="min-h-screen">
               <Navbar />
               <main className="py-8">
-                <div className="container mx-auto px-4">
+                <Container>
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     <div className="hidden lg:block lg:col-span-3">Sidebar</div>
                     <div className="col-span-1 lg:col-span-9">{children}</div>
                   </div>
-                </div>
+                </Container>
               </main>
             </div>
           </ThemeProvider>

@@ -4,12 +4,22 @@ import { LucideMoon, LucideSun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "./ui/button";
 
-const ModeToggle = () => {
+interface IModeToggleProps {
+  variant?:
+    | "link"
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost";
+}
+
+const ModeToggle = ({ variant = "outline" }: IModeToggleProps) => {
   const { theme, setTheme } = useTheme();
 
   return (
     <Button
-      variant="outline"
+      variant={variant}
       size="icon"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
