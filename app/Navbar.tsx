@@ -1,9 +1,12 @@
+import { syncUser } from "@/actions/user.action";
 import Container from "@/components/Container";
 import DesktopNav from "@/components/DesktopNav";
 import MobileNav from "@/components/MobileNav";
 import Link from "next/link";
 
-const Navbar = () => {
+const Navbar = async () => {
+  await syncUser();
+
   return (
     <header className="sticky top-0 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
       <Container>
