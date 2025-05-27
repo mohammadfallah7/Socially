@@ -1,9 +1,10 @@
+import Container from "@/components/Container";
 import ThemeProvider from "@/components/ThemeProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./Navbar";
-import Container from "@/components/Container";
+import Sidebar from "./Sidebar";
 
 export const metadata: Metadata = {
   title: "Socially",
@@ -26,7 +27,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               <main className="py-8">
                 <Container>
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <div className="hidden lg:block lg:col-span-3">Sidebar</div>
+                    <div className="hidden lg:block lg:col-span-3">
+                      <Sidebar />
+                    </div>
                     <div className="col-span-1 lg:col-span-9">{children}</div>
                   </div>
                 </Container>

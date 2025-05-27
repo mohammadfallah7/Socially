@@ -28,4 +28,13 @@ const syncUser = async () => {
   }
 };
 
-export { syncUser };
+const getUserByClerkId = async (clerkId: string) => {
+  return await prisma.user.findUnique({
+    where: { clerkId },
+    include: {
+      _count: { select: { followers: true, followings: true, posts: true } },
+    },
+  });
+};
+
+export { syncUser, getUserByClerkId };
