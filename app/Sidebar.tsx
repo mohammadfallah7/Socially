@@ -60,7 +60,9 @@ const Sidebar = async () => {
               </Avatar>
 
               <div className="mt-4 space-y-1">
-                <h3 className="font-semibold">{dbUser.name}</h3>
+                {dbUser.name && (
+                  <h3 className="font-semibold">{dbUser.name}</h3>
+                )}
                 <p className="text-sm text-muted-foreground">
                   {dbUser.username}
                 </p>

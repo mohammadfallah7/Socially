@@ -51,7 +51,7 @@ const CreatePost = () => {
           <div className="flex gap-4">
             <Avatar className="w-10 h-10">
               <AvatarImage
-                src={user.imageUrl}
+                src={user.imageUrl || "/avatar.png"}
                 alt={user.fullName || user.emailAddresses[0].emailAddress}
               />
             </Avatar>

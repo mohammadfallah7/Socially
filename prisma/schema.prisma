@@ -24,8 +24,8 @@ model User {
   posts                Post[]
   comments             Comment[]
   likes                Like[]
-  followers            Follows[]      @relation("follower")
-  followings           Follows[]      @relation("following")
+  followers            Follows[]      @relation("following")
+  followings           Follows[]      @relation("follower")
   notifications        Notification[] @relation("userNotifications")
   notificationsCreated Notification[] @relation("notificationCreator")
 }
