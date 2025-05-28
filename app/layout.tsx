@@ -2,6 +2,7 @@ import Container from "@/components/Container";
 import ThemeProvider from "@/components/ThemeProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
@@ -35,6 +36,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                 </Container>
               </main>
             </div>
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

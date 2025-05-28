@@ -37,4 +37,13 @@ const getUserByClerkId = async (clerkId: string) => {
   });
 };
 
-export { syncUser, getUserByClerkId };
+const getDbUserId = async () => {
+  const user = await currentUser();
+  if (!user) throw new Error("Unauthenticated");
+
+  const dbUser = await getUserByClerkId(user.id);
+  if (!dbUser) throw new Error("User not found");
+  return dbUser.id;
+};
+
+export { syncUser, getUserByClerkId, getDbUserId };
