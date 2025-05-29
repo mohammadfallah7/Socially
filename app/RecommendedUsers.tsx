@@ -8,7 +8,7 @@ const RecommendedUsers = async () => {
   const users = await getRandomUsers();
 
   return (
-    <Card>
+    <Card className="sticky top-20">
       <CardHeader>
         <CardTitle>Who to Follow</CardTitle>
       </CardHeader>
