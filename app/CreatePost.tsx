@@ -24,12 +24,12 @@ const CreatePost = () => {
     setIsPosting(true);
 
     try {
-      const { success } = await createPost(
+      const res = await createPost(
         createPostForm.content,
         createPostForm.image
       );
 
-      if (success) {
+      if (res?.success) {
         setCreatePostForm({ content: "", image: "" });
         setShowImageUpload(false);
         toast.success("Post created successfully");
