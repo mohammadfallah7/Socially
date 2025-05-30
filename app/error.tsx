@@ -16,7 +16,7 @@ const ErrorPage = ({
   }, [error]);
 
   return (
-    <div className="h-[calc(100vh-20rem)] flex flex-col items-center justify-center gap-5">
+    <div className="h-[calc(100vh-15rem)] flex flex-col items-center justify-center gap-5">
       <LucideBug size={50} />
       <p className="text-muted-foreground">Something went wrong!</p>
       <Button onClick={() => reset()}>Try again</Button>

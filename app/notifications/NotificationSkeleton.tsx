@@ -15,7 +15,7 @@ const NotificationSkeleton = () => {
           </div>
         </CardHeader>
         <CardContent className="p-0">
-          <ScrollArea className="h-[calc(100vh-12rem)]">
+          <ScrollArea className="h-[calc(100vh-15rem)]">
             {skeletonItems.map((index) => (
               <div key={index} className="flex items-start gap-4 p-4 border-b">
                 <Skeleton className="h-10 w-10 rounded-full" />
