@@ -1,6 +1,6 @@
 import { getRandomUsers } from "@/actions/user.action";
 import FollowButton from "@/components/FollowButton";
-import { AvatarImage, Avatar } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 

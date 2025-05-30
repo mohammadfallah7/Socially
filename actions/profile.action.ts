@@ -128,8 +128,8 @@ const isFollowing = async (targetUserId: string) => {
 
 export {
   getProfileByUsername,
-  getUserPosts,
   getUserLikedPosts,
-  updateProfile,
+  getUserPosts,
   isFollowing,
+  updateProfile,
 };

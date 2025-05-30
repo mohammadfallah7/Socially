@@ -1,8 +1,8 @@
 "use client";
 
 import { UploadDropzone } from "@/lib/uploadthing";
-import { Button } from "./ui/button";
 import { LucideX } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface IImageUploadProps {
   onChange: (url: string) => void;

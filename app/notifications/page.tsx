@@ -4,14 +4,14 @@ import {
   getNotifications,
   markNotificationsAsRead,
 } from "@/actions/notification.action";
-import { useEffect, useState } from "react";
-import NotificationSkeleton from "./NotificationSkeleton";
-import toast from "react-hot-toast";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { formatDistanceToNow } from "date-fns";
 import { LucideHeart, LucideMessageCircle, LucideUserPlus } from "lucide-react";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import NotificationSkeleton from "./NotificationSkeleton";
 
 type Notifications = Awaited<ReturnType<typeof getNotifications>>;
 type Notification = Notifications[number];

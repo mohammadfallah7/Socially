@@ -162,4 +162,4 @@ const deletePost = async (postId: string) => {
   }
 };
 
-export { createPost, getPosts, toggleLike, createComment, deletePost };
+export { createComment, createPost, deletePost, getPosts, toggleLike };
