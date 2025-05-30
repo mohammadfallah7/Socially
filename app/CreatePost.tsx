@@ -1,6 +1,7 @@
 "use client";
 
 import { createPost } from "@/actions/post.action";
+import ImageUpload from "@/components/ImageUpload";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -69,6 +70,19 @@ const CreatePost = () => {
             />
           </div>
           {/* TODO: Handle image upload */}
+
+          {(showImageUpload || createPostForm.image) && (
+            <div className="border rounded-lg p-4">
+              <ImageUpload
+                endpoint="postImage"
+                value={createPostForm.image}
+                onChange={(url) =>
+                  setCreatePostForm({ ...createPostForm, image: url })
+                }
+              />
+            </div>
+          )}
+
           <div className="flex items-center justify-between border-t pt-4">
             <div className="flex gap-2">
               <Button
