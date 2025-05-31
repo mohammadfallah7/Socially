@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { getDbUserId } from "./user.action";
 
@@ -110,25 +111,27 @@ const createComment = async (postId: string, content: string) => {
     });
     if (!post) throw new Error("Post not found");
 
-    const [comment] = await prisma.$transaction(async (tx) => {
-      const newComment = await tx.comment.create({
-        data: { postId, authorId: userId, content },
-      });
-
-      if (post.authorId !== userId) {
-        await tx.notification.create({
-          data: {
-            type: "COMMENT",
-            creatorId: userId,
-            commentId: newComment.id,
-            userId: post.authorId,
-            postId,
-          },
+    const [comment] = await prisma.$transaction(
+      async (tx: Prisma.TransactionClient) => {
+        const newComment = await tx.comment.create({
+          data: { postId, authorId: userId, content },
         });
-      }
 
-      return [newComment];
-    });
+        if (post.authorId !== userId) {
+          await tx.notification.create({
+            data: {
+              type: "COMMENT",
+              creatorId: userId,
+              commentId: newComment.id,
+              userId: post.authorId,
+              postId,
+            },
+          });
+        }
+
+        return [newComment];
+      }
+    );
 
     revalidatePath("/");
 

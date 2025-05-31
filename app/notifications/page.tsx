@@ -40,7 +40,9 @@ const NotificationsPage = () => {
         const data = await getNotifications();
         setNotifications(data);
 
-        const unreadIds = data.filter((n) => !n.read).map((n) => n.id);
+        const unreadIds = data
+          .filter((n: { read: boolean }) => !n.read)
+          .map((n: { id: string }) => n.id);
         if (unreadIds.length > 0) {
           await markNotificationsAsRead(unreadIds);
         }

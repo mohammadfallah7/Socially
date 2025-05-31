@@ -5,6 +5,8 @@ import CreatePost from "./CreatePost";
 import PostCard from "./PostCard";
 import RecommendedUsers from "./RecommendedUsers";
 
+type Posts = Awaited<ReturnType<typeof getPosts>>;
+
 const HomePage = async () => {
   const user = await currentUser();
   const posts = await getPosts();
@@ -15,7 +17,7 @@ const HomePage = async () => {
       <div className="col-span-1 lg:col-span-6">
         {user && <CreatePost />}
         <div className="space-y-6">
-          {posts.map((post) => (
+          {posts.map((post: Posts[number]) => (
             <PostCard key={post.id} post={post} dbUserId={dbUserId} />
           ))}
         </div>

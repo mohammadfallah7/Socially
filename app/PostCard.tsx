@@ -19,6 +19,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 type Posts = Awaited<ReturnType<typeof getPosts>>;
+type Comment = Posts[number]["comments"][number];
 
 interface IPostCardProps {
   post: Posts[number];
@@ -34,7 +35,7 @@ const PostCard: React.FC<IPostCardProps> = ({ post, dbUserId }) => {
   const [optimisticLikes, setOptimisticLikes] = useState(post._count.likes);
   const [isLiking, setIsLiking] = useState(false);
   const [hasLiked, setHasLiked] = useState(
-    post.likes.some((l) => l.userId === dbUserId)
+    post.likes.some((l: { userId: string }) => l.userId === dbUserId)
   );
 
   const handleLike = async () => {
@@ -42,14 +43,16 @@ const PostCard: React.FC<IPostCardProps> = ({ post, dbUserId }) => {
 
     try {
       setIsLiking(true);
-      setHasLiked((prev) => !prev);
-      setOptimisticLikes((prev) => prev + (hasLiked ? -1 : 1));
+      setHasLiked((prev: boolean) => !prev);
+      setOptimisticLikes((prev: number) => prev + (hasLiked ? -1 : 1));
 
       await toggleLike(post.id);
     } catch (error) {
       console.error("Error in like post", error);
       setOptimisticLikes(post._count.likes);
-      setHasLiked(post.likes.some((l) => l.userId === dbUserId));
+      setHasLiked(
+        post.likes.some((l: { userId: string }) => l.userId === dbUserId)
+      );
     } finally {
       setIsLiking(false);
     }
@@ -195,7 +198,7 @@ const PostCard: React.FC<IPostCardProps> = ({ post, dbUserId }) => {
           {showComments && (
             <div className="space-y-4 border-t">
               <div className="space-y-4 mt-4">
-                {post.comments.map((comment) => (
+                {post.comments.map((comment: Comment) => (
                   <div key={comment.id} className="flex gap-3">
                     <Avatar className="size-8 flex-shrink-0">
                       <AvatarImage

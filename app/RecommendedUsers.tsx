@@ -4,6 +4,8 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 
+type Users = Awaited<ReturnType<typeof getRandomUsers>>;
+
 const RecommendedUsers = async () => {
   const users = await getRandomUsers();
 
@@ -14,7 +16,7 @@ const RecommendedUsers = async () => {
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          {users?.map((user) => (
+          {users?.map((user: Users[number]) => (
             <div
               key={user.id}
               className="flex items-center justify-between gap-2"
